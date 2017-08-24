@@ -19,6 +19,7 @@
 		2306D11C1F4DA8280018057E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2306D11B1F4DA8280018057E /* ShareViewController.swift */; };
 		2306D11F1F4DA8280018057E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2306D11D1F4DA8280018057E /* MainInterface.storyboard */; };
 		2306D1231F4DA8280018057E /* Share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2306D1191F4DA8270018057E /* Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2306D12C1F4EE4530018057E /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2306D12B1F4EE4530018057E /* MainTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		2306D1201F4DA8280018057E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2306D1281F4DAB7B0018057E /* Share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Share.entitlements; sourceTree = "<group>"; };
 		2306D1291F4DAB990018057E /* ShareExtensions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtensions.entitlements; sourceTree = "<group>"; };
+		2306D12B1F4EE4530018057E /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				2306D1291F4DAB990018057E /* ShareExtensions.entitlements */,
+				2306D12A1F4EE43C0018057E /* Main */,
 				2306D10D1F4D60B40018057E /* ShowImage */,
 				2306D1121F4DA5E60018057E /* ShowUrl */,
 				2306D0DF1F4D603D0018057E /* AppDelegate.swift */,
@@ -196,6 +199,14 @@
 				2306D1201F4DA8280018057E /* Info.plist */,
 			);
 			path = Share;
+			sourceTree = "<group>";
+		};
+		2306D12A1F4EE43C0018057E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2306D12B1F4EE4530018057E /* MainTableViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +392,7 @@
 				2306D0E21F4D603D0018057E /* ViewController.swift in Sources */,
 				2306D1141F4DA5F60018057E /* ShowUrlViewController.swift in Sources */,
 				2306D10F1F4D60CA0018057E /* ShowImageViewController.swift in Sources */,
+				2306D12C1F4EE4530018057E /* MainTableViewController.swift in Sources */,
 				2306D0E01F4D603D0018057E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +697,7 @@
 				2306D1061F4D603D0018057E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2306D1071F4D603D0018057E /* Build configuration list for PBXNativeTarget "ShareExtensionsTests" */ = {
 			isa = XCConfigurationList;
@@ -693,6 +706,7 @@
 				2306D1091F4D603D0018057E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2306D10A1F4D603D0018057E /* Build configuration list for PBXNativeTarget "ShareExtensionsUITests" */ = {
 			isa = XCConfigurationList;
@@ -701,6 +715,7 @@
 				2306D10C1F4D603D0018057E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2306D1241F4DA8280018057E /* Build configuration list for PBXNativeTarget "Share" */ = {
 			isa = XCConfigurationList;
@@ -709,6 +724,7 @@
 				2306D1261F4DA8280018057E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
