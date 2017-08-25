@@ -25,6 +25,8 @@ class MainTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.title = "Main"
+        
+        // 验证在此处修改，git变化
     }
 
     override func didReceiveMemoryWarning() {
