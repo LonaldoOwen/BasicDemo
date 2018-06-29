@@ -5,11 +5,16 @@
 //  Created by owen on 17/7/22.
 //  Copyright © 2017年 owen. All rights reserved.
 //
+/// 功能：URLSession的简单封装
+/// 1、
+/// 2、
 
 import Foundation
 
 
 class NetworkManager {
+    
+    // MARK: - Properties
     
     let method: String!
     let url: String!
@@ -21,9 +26,17 @@ class NetworkManager {
     var request: URLRequest!
     let completionHandler: (Data?, URLResponse?, Error?) -> Void
     
-    /**
-     @parameters: 默认为空
-     */
+    
+    // MARK: - Methods
+    
+    /// Initialize a request.
+    ///
+    /// - Parameters:
+    ///   - url: Request url.
+    ///   - method: Request method.
+    ///   - headers: Request header, defult empty.
+    ///   - parameters: Request parameters, default empty.
+    ///   - completionHandler: completionHandler.
     init (url: String, method: String, headers: [String: String] = [:], parameters: [String: Any] = [:], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         self.url = url
         self.method = method
@@ -33,6 +46,8 @@ class NetworkManager {
         self.request = URLRequest(url: URL(string: self.url)!)
     }
     
+    
+    /// 构造Request
     func buildRequest() {
         if self.method == "GET" && self.parameters.count > 0 {
             self.request = URLRequest(url: URL(string: url + "?" + buildParams(parameters: parameters as [String : Any]))!)
@@ -42,25 +57,30 @@ class NetworkManager {
         for (key, value) in headers {
             request.addValue(value, forHTTPHeaderField: key)
         }
-        print("request.headers: \(request.allHTTPHeaderFields)")
+        print("request.headers: \(String(describing: request.allHTTPHeaderFields))")
     }
     
+    /// 构造Body
     func buildBody() {
         if self.parameters.count > 0 && self.method != "GET" {
             // Content-Type = application/json
             request.httpBody = try? JSONSerialization.data(withJSONObject: self.parameters, options: .prettyPrinted)
             //request.httpBody = buildParams(parameters: parameters).data(using: .utf8, allowLossyConversion: false)
         }
-        print("request.httpBody: \(request.httpBody)")
+        print("request.httpBody: \(String(describing: request.httpBody))")
     }
     
+    /// 构造Task
     func runTask() {
+        // data task
         dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
             self.completionHandler(data, response, error)
         })
         dataTask.resume()
+        // 还可以添加其他类型task
     }
     
+    /// 运行Request
     public func run() {
         buildRequest()
         buildBody()
@@ -68,7 +88,7 @@ class NetworkManager {
     }
     
     
-    /// helper
+    // MARK: - helper
     
     // 这三个方法是URl ecoding，Content-Type＝application/x-www-form-urlencoded
     // 从 Alamofire 偷了三个函数
@@ -172,6 +192,14 @@ class NetworkManager {
     
 }
 
+//
 extension NSNumber {
     fileprivate var isBool: Bool { return CFBooleanGetTypeID() == CFGetTypeID(self) }
 }
+
+
+
+
+
+
+

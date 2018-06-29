@@ -17,7 +17,8 @@ class ViewController: UIViewController {
         ///
         //testRequestBasic()
         //testGetWithNoParameters()
-        testGetWithParameters()
+        //testGetWithParameters()
+        testWeatherInterface()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +26,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /// Examples
+    
+    // MARK: - Examples
     //
     func testRequestBasic() {
         let headers: [String: String] = [
@@ -60,15 +62,39 @@ class ViewController: UIViewController {
     //
     func testGetWithNoParameters() {
         Network.get(url: "http://www.jianshu.com/p/fe2798574aa0") { (data, response, error) in
-            print("response: \(response)")
+            print("response: \(String(describing: response))")
         }
     }
 
     // 
     func testGetWithParameters() {
         Network.get(url: "http://music.163.com/#/my/m/music/playlist", headers: [:], parameters: ["id": "781294334", "name": "free", "type": "audio"]) { (data, response, error) in
-            print("response: \(response)")
+            print("response: \(String(describing: response))")
         }
+    }
+    
+    // 验证天气接口
+    // 2018/06/29
+    func testWeatherInterface() {
+        print("# testWeatherInterface:")
+        // 构造请求
+        let url = "http://test.m.api.cct.cn/api-common/get-city-pname"
+        let header = ["Content-type": "application/json"]
+        let parameters = ["cityName": "beijing"]
+        
+        Network.post(url: url, headers: header, paremeters: parameters) { (data, response, error) in
+            
+            do {
+                // Parse data to JSON
+                let jsonData: [String: Any] = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String : Any]
+                let dataArray: [[String: String]] = jsonData["data"] as! [[String: String]]
+                print("dataArray: \(dataArray)")
+            } catch let error {
+                // Handle error
+                print("Response error: \(error)")
+            }
+        }
+        
     }
 
 }

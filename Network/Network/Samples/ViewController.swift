@@ -95,6 +95,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let screeningVc: ScreeningViewController = ScreeningViewController()
         self.navigationController?.show(screeningVc, sender: sender)
     }
+    
+    
+    
+    // MARK: - Temp
+    
+    // 验证Request
+    
+    
+    
+    
+    
 
 }
 

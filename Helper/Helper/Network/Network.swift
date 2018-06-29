@@ -5,15 +5,30 @@
 //  Created by owen on 17/7/22.
 //  Copyright © 2017年 owen. All rights reserved.
 //
+/// 功能：HTTP Request 封装
+/// 1、
+/// 2、
 
 import Foundation
 
 public class Network {
     
     // basic
+    /// Basic request method。
+    ///
+    /// - Parameters:
+    ///   - method: Request method, POST or GET.
+    ///   - url: Request url.
+    ///   - headers: Request headers.
+    ///   - parameters: Request parameters.
+    ///   - completionHandler: completionHandler.
     public static func request(method: String, url: String, headers: [String: String], parameters: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         
-        let manager = NetworkManager(url: url, method: method, headers: headers ,parameters: parameters, completionHandler: completionHandler)
+        let manager = NetworkManager(url: url,
+                                     method: method,
+                                     headers: headers ,
+                                     parameters: parameters,
+                                     completionHandler: completionHandler)
         manager.run()
     }
     
